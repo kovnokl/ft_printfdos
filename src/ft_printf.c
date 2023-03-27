@@ -6,7 +6,7 @@
 /*   By: knickel <knickel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 06:21:44 by knickel           #+#    #+#             */
-/*   Updated: 2023/03/27 17:58:29 by knickel          ###   ########.fr       */
+/*   Updated: 2023/03/27 18:21:21 by knickel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	loop_str(char *str_ptr, char *prev_ptr, va_list *vars)
 			return (printed_chars);
 		total_chars += printed_chars;
 		prev_ptr = str_ptr + 2;
-		str_ptr = ft_strchr(str_ptr + 1, '%');
+		str_ptr = ft_strchr(str_ptr + 2, '%');
 	}
 	printed_chars = write(1, prev_ptr, ft_strlen(prev_ptr));
 	if (printed_chars < 0)

@@ -6,12 +6,12 @@
 #    By: knickel <knickel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 06:00:27 by knickel           #+#    #+#              #
-#    Updated: 2023/03/27 18:13:19 by knickel          ###   ########.fr        #
+#    Updated: 2023/03/27 18:15:50 by knickel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # tool macros
-NAME = libft.a
+NAME = libftprintf.a
 CC = gcc
 RM = rm -f
 OPT = -O0

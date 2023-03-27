@@ -6,7 +6,7 @@
 /*   By: knickel <knickel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:56:56 by kovnokl           #+#    #+#             */
-/*   Updated: 2023/03/27 16:53:37 by knickel          ###   ########.fr       */
+/*   Updated: 2023/03/27 18:32:55 by knickel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# define LOWHEX 0
-# define UPHEX 1
+# define LOWHEX 1
+# define UPHEX 0
 
 //part 1
 int				ft_isalpha(int c);

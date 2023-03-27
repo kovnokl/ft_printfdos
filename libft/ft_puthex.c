@@ -44,9 +44,9 @@ int	intputhex(unsigned int val, int uphex, int fd)
 		base = (char *)lowbase;
 	else
 		base = (char *)upbase;
-	if (val > 15)
+	if (val >= 16)
 	{
-		printed_chars = longputhex(val / 16, uphex, fd);
+		printed_chars = intputhex(val / 16, uphex, fd);
 		return (printed_chars + write(fd, &base[val % 16], 1));
 	}
 	else

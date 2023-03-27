@@ -6,7 +6,7 @@
 /*   By: knickel <knickel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 13:03:30 by knickel           #+#    #+#             */
-/*   Updated: 2023/03/27 17:53:54 by knickel          ###   ########.fr       */
+/*   Updated: 2023/03/27 18:33:20 by knickel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	handle_print_string(va_list *vars)
 	char	*str;
 
 	str = va_arg(*vars, char *);
+	if (str == NULL)
+		return (write(1, "(null)", 6));
 	return (write(1, str, ft_strlen(str)));
 }
 
@@ -33,7 +35,7 @@ int	handle_print_voidptr(va_list *vars)
 	void	*ptr;
 
 	ptr = va_arg(*vars, void *);
-	return (longputhex((unsigned long)ptr, LOWHEX, 1));
+	return (write (1, "0x", 2) + longputhex((unsigned long)ptr, LOWHEX, 1));
 }
 
 int	handle_print_decimal(va_list *vars)
