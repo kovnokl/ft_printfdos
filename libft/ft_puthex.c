@@ -3,32 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knickel <knickel@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: knickel <knickel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 12:26:14 by knickel           #+#    #+#             */
-/*   Updated: 2023/03/27 12:44:36 by knickel          ###   ########.fr       */
+/*   Updated: 2023/03/27 16:46:51 by knickel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-int	ptrputhex(size_t ptr, int fd)
+int	longputhex(unsigned long val, int uphex, int fd)
 {
-	static const char	*base = "0123456789abcdef";
-	int					return_val;
+	const char	*lowbase = "0123456789abcdef";
+	const char	*upbase = "0123456789ABCDEF";
+	char		*base;
+	int			printed_chars;
 
-	if (ptr != 0)
+	if (uphex)
+		base = lowbase;
+	else
+		base = upbase;
+	if (val > 15)
 	{
-		if (ptrputhex(ptr / 16, fd))
-			return (write(fd, &base[ptr % 16], 1));
-		else
-			return (0);
+		printed_chars = longputhex(val / 16, uphex, fd);
+		return (printed_chars + write(fd, &base[val % 16], 1));
 	}
 	else
-		return (1);
+		(write(fd, &base[val], 1));
 }
 
-int	iputhex(int ptr)
+int	intputhex(unsigned int val, int uphex, int fd)
 {
-	
+	const char	*lowbase = "0123456789abcdef";
+	const char	*upbase = "0123456789ABCDEF";
+	char		*base;
+	int			printed_chars;
+
+	if (uphex)
+		base = lowbase;
+	else
+		base = upbase;
+	if (val > 15)
+	{
+		printed_chars = longputhex(val / 16, uphex, fd);
+		return (printed_chars + write(fd, &base[val % 16], 1));
+	}
+	else
+		return (write(fd, &base[val], 1));
 }

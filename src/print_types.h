@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   print_types.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knickel <knickel@student.42heilbronn.de    +#+  +:+       +#+        */
+/*   By: knickel <knickel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 06:31:30 by knickel           #+#    #+#             */
-/*   Updated: 2023/03/27 12:49:57 by knickel          ###   ########.fr       */
+/*   Updated: 2023/03/27 17:19:45 by knickel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINT_TYPES_H
-# define PRINT_TYEPS_H
+# define PRINT_TYPES_H
 
 # include <unistd.h>
 # include <stdarg.h>
-# include "../libs/libft/libft.h"
+# include "../libft/libft.h"
 
 int	handle_print_char(va_list *vars);
 int	handle_print_string(va_list *vars);

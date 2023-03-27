@@ -6,7 +6,7 @@
 /*   By: knickel <knickel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 06:21:44 by knickel           #+#    #+#             */
-/*   Updated: 2023/03/24 14:25:40 by knickel          ###   ########.fr       */
+/*   Updated: 2023/03/27 17:39:14 by knickel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,39 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	vars;
 	char	*str_ptr;
+	char	*prev_ptr;
 
-	str_ptr = str;
 	va_start(vars, str);
-	str_ptr = ft_strchr(str_ptr, '%') + 1;
-	while (str_ptr != NULL)
+	str_ptr = ft_strchr(str, '%');
+	prev_ptr = str;
+	return (loop_str(str_ptr, prev_ptr, &vars));
+}
+
+int	loop_str(char *str_ptr, char *prev_ptr, va_list *vars)
+{
+	int		printed_chars;
+	int		total_chars;
+
+	total_chars = 0;
+	while (str_ptr != NULL && str_ptr[1] != 0)
 	{
-		if (!ft_print_by_type(*str_ptr, &vars))
-			return (0);
-		str_ptr = ft_strchr(str_ptr, '%') + 1;
+		printed_chars = write(1, prev_ptr, str_ptr - prev_ptr);
+		if (printed_chars < 0)
+			return (printed_chars);
+		total_chars += printed_chars;
+		printed_chars = ft_print_by_type(str_ptr[1], vars);
+		if (printed_chars < 0)
+			return (printed_chars);
+		total_chars += printed_chars;
+		prev_ptr = str_ptr + 2;
+		str_ptr = ft_strchr(str_ptr + 1, '%');
 	}
-	va_end(vars);
+	printed_chars = write(1, prev_ptr, ft_strlen(prev_ptr));
+	if (printed_chars < 0)
+		return (printed_chars);
+	total_chars += printed_chars;
+	va_end(*vars);
+	return (total_chars);
 }
 
 int	ft_print_by_type(const char c, va_list *vars)
@@ -49,6 +71,5 @@ int	ft_print_by_type(const char c, va_list *vars)
 		return (handle_print_uphex(vars));
 	else if (c == '%')
 		return (write(1, "%", 1));
-	else
-		return (0);
+	return (0);
 }
