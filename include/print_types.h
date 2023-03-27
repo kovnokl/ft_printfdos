@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   print_types.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: knickel <knickel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/21 06:12:13 by knickel           #+#    #+#             */
-/*   Updated: 2023/03/27 17:37:03 by knickel          ###   ########.fr       */
+/*   Created: 2023/03/21 06:31:30 by knickel           #+#    #+#             */
+/*   Updated: 2023/03/27 17:55:15 by knickel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef PRINT_TYPES_H
+# define PRINT_TYPES_H
 
+# include <unistd.h>
 # include <stdarg.h>
 # include "../libft/libft.h"
-# include "print_types.h"
 
-int	ft_printf(const char *str, ...);
-int	ft_print_by_type(const char c, va_list *vars);
-int	loop_str(char *str_ptr, char *prev_ptr, va_list *vars);
+int	handle_print_char(va_list *vars);
+int	handle_print_string(va_list *vars);
+int	handle_print_voidptr( va_list *vars);
+int	handle_print_decimal(va_list *vars);
+int	handle_print_int(va_list *vars);
+int	handle_print_uint(va_list *vars);
+int	handle_print_lowhex(va_list *vars);
+int	handle_print_uphex(va_list *vars);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: knickel <knickel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 06:21:44 by knickel           #+#    #+#             */
-/*   Updated: 2023/03/27 17:39:14 by knickel          ###   ########.fr       */
+/*   Updated: 2023/03/27 17:58:29 by knickel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 int	ft_printf(const char *str, ...)
 {
@@ -20,7 +20,7 @@ int	ft_printf(const char *str, ...)
 
 	va_start(vars, str);
 	str_ptr = ft_strchr(str, '%');
-	prev_ptr = str;
+	prev_ptr = (char *)str;
 	return (loop_str(str_ptr, prev_ptr, &vars));
 }
 
